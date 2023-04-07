@@ -41,7 +41,7 @@ function CardList({ refresh }) {
                         <span className='hidden'>
                             {color = user.gender === 'male' ? '#03BFCB' : '#EA4fC6'}
                         </span>
-                        <img className={`border-[${color}] mx-auto rounded-full p-1 border-2  mb-4`} src={user.picture.large} alt="user picture" />
+                        <img className={`border-[${user.gender === 'male' ? '#03BFCB' : '#EA4fC6'}] mx-auto rounded-full p-1 border-2  mb-4`} src={user.picture.large} alt="user picture" />
                         <h3 className='text-lg font-semibold text-center'>
                             {user.name.first + ' ' + user.name.last}
                         </h3>
