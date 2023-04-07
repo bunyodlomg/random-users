@@ -31,7 +31,7 @@ function CardList({ refresh }) {
     };
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 text-center lg:grid-cols-3 mx-auto gap-y-14 gap-x-4 px-5 my-24'>
+        <div className='grid grid-cols-1 md:grid-cols-2 text-center lg:grid-cols-3 mx-auto gap-y-14 gap-x-4 px-5 my-24 '>
             {isPanding && <Loading />}
             {data && newArr.map((user) => {
                 return (
