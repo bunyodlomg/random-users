@@ -1,18 +1,27 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import './App.css'
-import CardList from './components/CardList'
-import Search from './components/Search'
-function App() {
+import NotFound from "./pages/NotFound"
+import { useFetch } from './hooks/useFetch'
+import Home from './pages/Home'
 
-  const [clear, setClear] = useState(true)
+function App() {
+  const [l, setL] = useState(false)
   const [refresh, setRefresh] = useState(true)
+  const { data, error } = useFetch('https://randomuser.me/api/?results=9', refresh)
+  if (data) {
+    setTimeout(() => {
+      setL(true)
+    }, 1000);
+  }
   return (
     <div className="App font-FontMontserrat">
-      <div className="wave"></div>
-      <div className="wave"></div>
-      <div className="wave"></div>
-      <Search setRefresh={setRefresh} refresh={refresh} setClear={setClear} clear={clear} />
-      {clear && <CardList refresh={refresh}/>}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home data={data} l={l} setRefresh={setRefresh} refresh={refresh} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
